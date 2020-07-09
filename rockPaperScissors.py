@@ -7,7 +7,7 @@ def main():
     roll = get_roll(player,rolls)
     computer = random.choice(rolls)
     game(roll,computer)
-    print('game ended')
+    print('Game ended')
     
     
 
@@ -22,7 +22,7 @@ def get_player():
 
 def get_roll(player,rolls):
     while True:
-        roll = input(f"{player}, what is your roll? [rock, paper, scissors]:")
+        roll = input(f"{player}, what is your roll? [rock, paper, scissors]:").lower()
         if roll not in rolls:
             print('not a valid roll, try again')
         else:
@@ -30,36 +30,37 @@ def get_roll(player,rolls):
 
 
 def game(roll,computer):
+    print(f'You chose {roll}')
     if roll == 'rock':
         def switch(computer):
             switcher = {
-                'rock': 'draw',
-                'paper': 'lose',
-                'scissors': 'win'
+                'rock': 'it\'s a draw',
+                'paper': 'You lose',
+                'scissors': 'You win'
             }
-            print(f'computer chose {computer}')
+            print(f'Computer chose {computer}')
             return switcher.get(computer,'error')
         print(switch(computer))
 
     if roll == 'paper':
         def switch(computer):
             switcher = {
-                'rock': 'win',
-                'paper': 'draw',
-                'scissors': 'lose'
+                'rock': 'You win',
+                'paper': 'it\'s a draw',
+                'scissors': 'You lose'
             }
-            print(f'computer chose {computer}')
+            print(f'Computer chose {computer}')
             return switcher.get(computer,'error')
         print(switch(computer))
 
     if roll == 'scissors':
         def switch(computer):
             switcher = {
-                'rock': 'lose',
-                'paper': 'win',
-                'scissors': 'draw'
+                'rock': 'You lose',
+                'paper': 'You win',
+                'scissors': 'it\'s a draw'
             }
-            print(f'computer chose {computer}')
+            print(f'Computer chose {computer}')
             return switcher.get(computer,'error')
         print(switch(computer))
 
