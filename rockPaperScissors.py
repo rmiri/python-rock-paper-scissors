@@ -4,9 +4,11 @@ def main():
     rolls = ['rock','paper','scissors']
     say_header()
     player = get_player()
-    roll = get_roll(player,rolls)
     computer = random.choice(rolls)
-    game(roll,computer)
+    roll = get_roll(player,rolls)
+    print(f'You chose {roll}')
+    print(f'Computer chose {computer}')
+    result(roll, computer)
     print('Game ended')
     
     
@@ -28,42 +30,29 @@ def get_roll(player,rolls):
         else:
             return roll
 
-
-def game(roll,computer):
-    print(f'You chose {roll}')
-    if roll == 'rock':
-        def switch(computer):
-            switcher = {
-                'rock': 'it\'s a draw',
+def result(roll, computer):
+    if roll == computer:
+        print('it\'s a draw') 
+    else:    
+        matches = {
+            'rock': {
                 'paper': 'You lose',
-                'scissors': 'You win'
-            }
-            print(f'Computer chose {computer}')
-            return switcher.get(computer,'error')
-        print(switch(computer))
-
-    if roll == 'paper':
-        def switch(computer):
-            switcher = {
+                'scissors': 'You win'           
+            },
+            'paper': {
                 'rock': 'You win',
-                'paper': 'it\'s a draw',
                 'scissors': 'You lose'
-            }
-            print(f'Computer chose {computer}')
-            return switcher.get(computer,'error')
-        print(switch(computer))
-
-    if roll == 'scissors':
-        def switch(computer):
-            switcher = {
+            },
+            'scissors': {
                 'rock': 'You lose',
                 'paper': 'You win',
-                'scissors': 'it\'s a draw'
             }
-            print(f'Computer chose {computer}')
-            return switcher.get(computer,'error')
-        print(switch(computer))
+        }
+        print(matches.get(roll,'Error').get(computer,'Error 2'))
 
+
+def best_of_three(computer,roll,player):
+    game(roll,computer)
     
    
 
